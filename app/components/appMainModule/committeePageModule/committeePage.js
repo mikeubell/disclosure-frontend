@@ -29,5 +29,6 @@
     ])
     .controller('committeePageController', require('./committeePageController'))
     .controller('committeePageContributionsController', require('./committeePageContributionsController'))
+    .controller('committeePageSupportingController', require('./committeePageSupportingController'))
     .config(require('./committeePageRoutes'));
 }());

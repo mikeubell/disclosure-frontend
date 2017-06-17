@@ -50,6 +50,24 @@ function committeePageRoutes($stateProvider) {
       }
     }
   });
+  $stateProvider.state({
+    name: 'appMain.committee.supporting',
+    url: '/supporting',
+    controller: 'committeePageSupportingController',
+    template: '<committee-listing committee="committee" contributions="supporting"></committee-listing>',
+    ncyBreadcrumb: {
+      label: '{{ committee.name }}',
+      parent: 'appMain'
+    },
+    resolve: {
+      supporting: function($stateParams, static_api) {
+        var apiCall = static_api.committee.supporting({
+          filer_id: $stateParams.filer_id
+        });
+        return apiCall.$promise;
+      }
+    }
+  });
 }
 
 committeePageRoutes.$inject = ['$stateProvider'];
