@@ -12,7 +12,7 @@ function committeePageRoutes($stateProvider) {
     name: 'appMain.committee',
     abstract: true,
     url: '^/committee/:filer_id',
-    template: require('./committeePage.html'),
+    template: '<ui-view></ui-view>',
     controller: 'committeePageController',
     resolve: {
       committee: function($stateParams, static_api) {
@@ -30,6 +30,16 @@ function committeePageRoutes($stateProvider) {
         pageMetadata({title: committee.name});
       });
     }]
+  });
+
+  $stateProvider.state({
+    name: 'appMain.committee.main',
+    url: '',
+    template: require('./committeePage.html'),
+    ncyBreadcrumb: {
+      label: '{{ committee.name }}',
+      parent: 'appMain'
+    }
   });
 
   $stateProvider.state({
@@ -62,6 +72,25 @@ function committeePageRoutes($stateProvider) {
     resolve: {
       supporting: function($stateParams, static_api) {
         var apiCall = static_api.committee.supporting({
+          filer_id: $stateParams.filer_id
+        });
+        return apiCall.$promise;
+      }
+    }
+  });
+  $stateProvider.state({
+    name: 'appMain.committee.opposing',
+    url: '/opposing',
+    controller: 'committeePageOpposingController',
+    template: '<opposing-listing committee="committee" contributions="opposing"></oppsoing-listing>',
+    ncyBreadcrumb: {
+      label: '{{ committee.name }}',
+      parent: 'appMain.committee.main'
+    },
+    resolve: {
+      opposing: function($stateParams, static_api) {
+        console.log('reslove: opposing');
+        var apiCall = static_api.committee.opposing({
           filer_id: $stateParams.filer_id
         });
         return apiCall.$promise;

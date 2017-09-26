@@ -1,0 +1,30 @@
+<div class="opposing-listing"> 
+    <div class="row">
+        <div class="col-xs-12">
+          <h3>Money spent oppsoing this Committee</h3>
+        </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-xs-5 search-container">
+        <label class="sr-only" for="contribution-search">Search Expenditures</label>
+        <div class="input-group">
+          <div class="input-group-addon"><i class="fa fa-search"></i></div>
+            <input type="text" class="form-control" id="contribution-search" placeholder="Search Expenditures" ng-model="$ctrl.gridOptions.quickFilterText">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-6">
+        <span class="text-xlarge text-semibold">2016</span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 committee-grid__container">
+        <div ag-grid="$ctrl.gridOptions" class="odca-grid" style="height: 100%;"></div>
+      </div>
+    </div>
+
+</div>

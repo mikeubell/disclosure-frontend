@@ -1,6 +1,6 @@
 'use strict';
 
-function committeePageSupportingController($scope, supporting) {
+function committeePageSupportingController($scope, contributions) {
   $scope.supporting = supporting;
 }
 
